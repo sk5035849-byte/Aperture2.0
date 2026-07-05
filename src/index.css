@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-darkroom-950 text-paper font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 800px 500px at 10% -10%, rgba(232, 163, 61, 0.08), transparent),
+    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(168, 58, 50, 0.08), transparent);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: theme('colors.safelight.500');
+  color: theme('colors.darkroom.950');
+}
+
+/* Film-strip sprocket edge, used on the top/bottom of photo frames */
+.sprocket-edge {
+  height: 10px;
+  background-image: radial-gradient(circle, theme('colors.darkroom.950') 2.5px, transparent 2.6px);
+  background-size: 16px 10px;
+  background-position: 6px center;
+  background-color: theme('colors.darkroom.700');
+}
+
+.film-frame {
+  @apply bg-darkroom-700 rounded-sm overflow-hidden;
+}
+
+/* Grease-pencil circle used to mark the Trending pick */
+.grease-mark {
+  filter: drop-shadow(0 0 1px rgba(194, 73, 63, 0.5));
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: theme('colors.darkroom.600');
+  border-radius: 999px;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
